@@ -1,0 +1,11 @@
+<div class="top">
+  <div class="container">
+    <div class="content">
+      <h1 class="heading">タスク時間管理ツールへようこそ</h1>
+      <% unless logged_in? %>
+        <p>利用するには<%= link_to "新規登録", new_user_path %></p>
+        <p>登録済みの方は<%= link_to "ログイン", login_path %></p>
+      <% end %>
+    </div>
+  </div>
+  </div>

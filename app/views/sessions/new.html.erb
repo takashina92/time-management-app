@@ -1,0 +1,24 @@
+<h1>Log in</h1>
+  <p>ログイン</p>
+  <%= form_with scope: :session, url: login_path do |form| %>
+      
+    <li>
+      <%= form.label :email, "メールアドレス" %>
+      <%= form.email_field :email %>
+    </li>
+      
+    <li>
+      <%= form.label :password, "パスワード" %>
+      <%= form.password_field :password %>
+    </li>
+
+    <li>
+      <%= form.label :remember_me do %>
+          <%= form.check_box :remember_me %>
+          <span>このンコンピューターに記憶する</span>
+      <% end %>
+    </li>
+      
+    <%= form.submit "ログイン", class: "btn btn-primary" %>
+
+  <% end %>

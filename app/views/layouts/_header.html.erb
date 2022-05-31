@@ -1,0 +1,30 @@
+<header> 
+  <div class="container">
+    <h1 class="title">
+      <% if logged_in? %>
+        <%= link_to "ゴミ", user_path(current_user) %>
+      <% else %>
+        <%= link_to "ゴミ", root_path %>
+      <% end %>
+    </h1>
+    <nav class="nav">
+      <% if logged_in? %>
+        <ul>
+          <li><%= link_to "未完了タスク", tasks_show_path(current_user) %></li>
+          <li><%= link_to "完了済みタスク", tasks_completed_show_path(current_user) %></li>
+          <li><%= link_to "プロフィール", user_path(current_user) %></li>
+          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <li><%= link_to "ヘルプ", help_path %></li>
+          <li><%= link_to "お問い合わせ", contact_path %></li>
+        </ul>
+      <% else %>
+        <ul>
+          <li><%= link_to "新規登録", new_user_path %></li>
+          <li><%= link_to "ログイン", login_path %></li>
+          <li><%= link_to "ヘルプ", help_path %></li>
+          <li><%= link_to "お問い合わせ", contact_path %></li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>

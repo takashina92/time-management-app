@@ -1,0 +1,21 @@
+<h1>未完了タスク一覧表示</h1>
+
+<div class="task_form">
+  <%= form_with url: tasks_path do |form| %>
+    <%= form.text_area :content %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= form.submit "タスクを作成" %>
+  <% end %>
+</div>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= task.content %>
+      <%= link_to "完了", complete_path, method: :post %>
+      <%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @tasks %>

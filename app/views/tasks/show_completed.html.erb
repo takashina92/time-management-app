@@ -1,0 +1,11 @@
+<h1>完了済みタスク</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= task.content %>
+      <%= link_to '削除', tasks_destroy_path, method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @tasks %>

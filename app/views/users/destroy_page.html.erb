@@ -1,0 +1,11 @@
+<h1>ユーザーを削除します</h1>
+<p>パスワードを入力してください</p>
+<%= form_with model: @user, url: user_path, method: :delete do |f| %>
+  
+  <li>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+  </li>
+
+  <%= f.submit "削除する", class: "btn btn-primary" %>
+<% end %>
