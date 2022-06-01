@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
 before_action :logged_in_user
-before_action :correct_user
+before_action :correct_user, only: [:show, :show_complete]
 
   def show 
     @task = Task.new
@@ -38,7 +38,7 @@ before_action :correct_user
     if path[:action] == 'show'
       redirect_to tasks_show_path(@task.user_id)
     elsif path[:action] == 'show_completed'
-      redirect_to tasks_show_completed_path(@task.user_id)
+      redirect_to tasks_completed_show_path(@task.user_id)
     else
       redirect_to root_url
     end

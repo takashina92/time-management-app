@@ -3,7 +3,7 @@
   <% @tasks.each do |task| %>
     <li>
       <%= task.content %>
-      <%= link_to '削除', tasks_destroy_path, method: :delete %>
+      <%= link_to '削除', tasks_destroy_path(id: task.id), method: :delete %>
     </li>
   <% end %>
 </ul>
