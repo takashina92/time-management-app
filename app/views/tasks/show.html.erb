@@ -2,20 +2,33 @@
 
 <div class="task_form">
   <%= form_with url: tasks_path do |form| %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, size: "50x5" %>
     <%= hidden_field_tag :user_id, current_user.id %>
-    <%= form.submit "タスクを作成" %>
+    <%= form.submit "タスクを作成" , class: 'submit-button' %>
   <% end %>
 </div>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= task.content %>
-      <%= link_to "完了", complete_path, method: :post %>
-      <%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %>
-    </li>
-  <% end %>
-</ul>
+<div class="task-list">
+  <table border="1" width="50%">
+    <tr bgcolor="silver">
+      <th>未完了タスク一覧</th>
+      <th>完了</th>
+      <th>削除</th>
+      <th>作業を開始する</th>
+      <th>作業を停止する</th>
+      <th>作業時間</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <th><%= task.content %></th>
+        <th><%= link_to "完了", complete_path(id: task.id), method: :post %></th>
+        <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
+        <th><%= link_to "開始", "#" %></th>
+        <th><%= link_to "終了", "#" %></th>
+        <th><%= "時間" %></th>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <%= paginate @tasks %>

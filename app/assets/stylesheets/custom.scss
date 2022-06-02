@@ -70,4 +70,14 @@ body {
 //task
 .task_form {
   padding-left: 50px;
+  
+}
+
+.task-list {
+  ul {
+    list-style-type: none;
+  }
+  table {
+    border-spacing: 0px 2px;
+  }
 }

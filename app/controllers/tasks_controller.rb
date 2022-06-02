@@ -13,7 +13,7 @@ before_action :correct_user, only: [:show, :show_complete]
   end
 
   def complete
-    @task = Task.find_by(user_id: current_user.id)
+    @task = Task.find_by(id: params[:id], user_id: current_user.id)
     @task.update(done: 1)
     flash[:success] = "タスクを完了しました"
     redirect_to tasks_show_path(@task.user_id)
