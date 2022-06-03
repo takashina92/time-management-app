@@ -1,11 +1,23 @@
 <h1>完了済みタスク</h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= task.content %>
-      <%= link_to '削除', tasks_destroy_path(id: task.id), method: :delete %>
-    </li>
-  <% end %>
-</ul>
+<div class="task-list">
+  <table border="1" width="50%">
+    <tr bgcolor="silver">
+      <th>作成日</th>
+      <th>完了日</th>
+      <th>完了済みタスク一覧</th>
+      <th>完了</th>
+      <th>削除</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
+        <th><%= task.complete_date %></th>
+        <th><%= task.content %></th>
+        <th><%= link_to "未完了にする", incomplete_path(id: task.id), method: :post %></th>
+        <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <%= paginate @tasks %>

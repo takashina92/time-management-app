@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   
   get    '/tasks/:id/show',           to: 'tasks#show',           as: 'tasks_show'
   get    '/tasks/:id/show_completed', to: 'tasks#show_completed', as: 'tasks_completed_show'
-  post   '/tasks/complete',                to: 'tasks#complete',       as: 'complete'
-  post   '/tasks',                         to: 'tasks#create'
-  delete '/tasks/destroy',                 to: 'tasks#destroy'
+  post   '/tasks/complete',           to: 'tasks#complete',       as: 'complete'
+  post   '/tasks/incomplete',         to: 'tasks#incomplete',     as: 'incomplete'
+  post   '/tasks',                    to: 'tasks#create'
+  delete '/tasks/destroy',            to: 'tasks#destroy'
+
   resources :users
-  
 end

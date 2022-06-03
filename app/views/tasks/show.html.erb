@@ -11,21 +11,17 @@
 <div class="task-list">
   <table border="1" width="50%">
     <tr bgcolor="silver">
+      <th>作成日</th>
       <th>未完了タスク一覧</th>
       <th>完了</th>
       <th>削除</th>
-      <th>作業を開始する</th>
-      <th>作業を停止する</th>
-      <th>作業時間</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
+        <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
         <th><%= task.content %></th>
         <th><%= link_to "完了", complete_path(id: task.id), method: :post %></th>
         <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
-        <th><%= link_to "開始", "#" %></th>
-        <th><%= link_to "終了", "#" %></th>
-        <th><%= "時間" %></th>
       </tr>
     <% end %>
   </table>

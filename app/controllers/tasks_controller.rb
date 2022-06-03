@@ -14,9 +14,16 @@ before_action :correct_user, only: [:show, :show_complete]
 
   def complete
     @task = Task.find_by(id: params[:id], user_id: current_user.id)
-    @task.update(done: 1)
+    @task.update(done: 1, complete_date: Date.today)
     flash[:success] = "タスクを完了しました"
     redirect_to tasks_show_path(@task.user_id)
+  end
+
+  def incomplete
+    @task = Task.find_by(id: params[:id], user_id: current_user.id)
+    @task.update(done: 0)
+    flash[:success] = "タスクを未完了にしました"
+    redirect_to tasks_completed_show_path(@task.user_id)
   end
 
   def create
