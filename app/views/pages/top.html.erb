@@ -1,11 +1,33 @@
-<div class="top">
-  <div class="container">
-    <div class="content">
-      <h1 class="heading">タスク時間管理ツールへようこそ</h1>
-      <% unless logged_in? %>
-        <p>利用するには<%= link_to "新規登録", new_user_path %></p>
-        <p>登録済みの方は<%= link_to "ログイン", login_path %></p>
+<div class="container">
+  <div class="col-md-6">
+    <div id="logbox">
+      <%= form_with model: @user, id: 'singup' do |f| %>
+        <h1>アカウントの作成</h1>
+        <%= f.text_field :name, placeholder: 'ユーザー名', class: 'input pass' %>
+        <%= f.email_field :email, placeholder: 'メールアドレス', class: 'input pass' %>
+        <%= f.password_field :password, placeholder: 'パスワード', class: 'input pass' %>
+        <%= f.password_field :password_confirmation, placeholder: 'パスワードの確認', class: 'input pass' %>
+        <%= f.submit 'アカウント作成', class: 'inputButton' %>
       <% end %>
     </div>
   </div>
+    <!--col-md-6-->
+    
+  <div class="col-md-6">
+    <div id="logbox">
+      <%= form_with scope: :session, url: login_path, id: 'signup' do |f| %>
+        <h1>ログイン</h1>
+        <%= f.email_field :email, placeholder: 'メールアドレス', class: 'input pass' %>
+        <%= f.password_field :password, placeholder: 'パスワード', class: 'input pass' %>
+        <%= f.submit 'ログイン', class: 'inputButton' %>
+        <div class="text-center">  
+          <%= f.check_box :remember_me %>
+          <span>このコンピューターに記憶する</span>
+        </div>
+        <div class='text-center'>
+          <%= link_to 'パスワードを忘れた', '#' %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>

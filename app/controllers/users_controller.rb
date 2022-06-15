@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = Task.where(user_id: current_user.id, done: 0)
+    @tasks_done = Task.where(user_id: current_user.id, done: 1)
   end
 
   def new

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#top'
+  get    '/sample', to: 'pages#sample'
   get    '/help',      to: 'pages#help'
   get    '/contact',   to: 'pages#contact' 
   get    '/login',     to: 'sessions#new'

@@ -1,7 +1,44 @@
-<div class="user_info">
-  <h1><%= @user.name %>さん、こんにちは</h1>
-  <p>あなたのメールアドレス</P>
-  <h2><%= @user.email %></h2>
-  <p>プロフィールの<%= link_to "変更", edit_user_path %></P>
-  <p>ユーザーの<%= link_to "削除", destroy_page_path %></p>
+<div class="ui-bg-cover ui-bg-overlay-container text-white" style="background:#00BFFF;">
+  <div class="ui-bg-overlay bg-dark opacity-50"></div>
+  <div class="container py-5">
+    <div class="media col-md-10 col-lg-8 col-xl-7 p-0 my-4 mx-auto">
+      <div class="media-body ml-5">
+        <h4 class="font-weight-bold mb-4"><%= @user.name %></h4>
+        <div class="opacity-75 mb-4">
+          <%= @user.email %>
+        </div>
+        <div class="opacity-75 mb-4">
+          <%= link_to "変更", edit_user_path, class: "edit-link" %>
+        </div>
+
+        <%= link_to tasks_show_path(@current_user), class: "d-inline-block text-white" do %>
+          <strong><%= @tasks.count %></strong>
+          <span class="opacity-75">未完了</span>
+        <% end %>
+      
+        <%= link_to tasks_completed_show_path(@current_user), class: "d-inline-block text-white ml-3" do %>
+          <strong><%= @tasks_done.count %></strong>
+          <span class="opacity-75">完了済み<span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-bg-overlay-container">
+    <div class="ui-bg-overlay bg-dark opacity-25"></div>
+    <ul class="nav nav-tabs tabs-alt justify-content-center border-transparent">
+      <li class="nav-item">
+        <a class="nav-link text-white py-4 active" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white py-4" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white py-4" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white py-4" href="#"></a>
+      </li>
+    </ul>
+  </div>
 </div>
