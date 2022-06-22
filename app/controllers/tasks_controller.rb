@@ -1,15 +1,19 @@
 class TasksController < ApplicationController
 
 before_action :logged_in_user
-before_action :correct_user, only: [:show, :show_complete]
+before_action :correct_user, only: [:index_complete, :index]
 
-  def show 
-    @task = Task.new
+  def index
     @tasks = Task.where(user_id: current_user.id, done: 0).page(params[:page])
   end
 
-  def show_completed
+  def index_completed
     @tasks = Task.where(user_id: current_user.id, done: 1).page(params[:page])
+  end
+
+  def show 
+    @task = Task.find_by(id: params[:id], user_id: current_user.id)
+    @working_hour = '00:00:00'
   end
 
   def complete
@@ -35,6 +39,18 @@ before_action :correct_user, only: [:show, :show_complete]
       flash[:danger] = "無効な投稿です"
       redirect_to tasks_show_path(@task.user_id) #renderだとタスク一覧が読み込めず表示エラーになる
     end
+  end
+
+  def start
+    @task = Task.find_by(id: params[:id])
+    @task.update(doing: 1)
+    redirect_to tasks_index_path(@task.user_id)
+  end
+
+  def stop
+    @task = Task.find_by(id: params[:id])
+    @task.update(doing: 0)
+    redirect_to tasks_index_path(@task.user_id)
   end
 
   def destroy

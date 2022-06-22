@@ -1,18 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <% if logged_in? %>
-      <%= link_to "Task App", user_path(@current_user), class: "navbar-brand" %>
-    <% else %>
-      <%= link_to "Task App", root_path, class: "navbar-brand" %>
-    <% end %>
+    <%= link_to "Task App", root_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to "未完了タスク", tasks_show_path(@current_user), class: "nav-link active" %>
+            <%= link_to "未完了タスク", tasks_index_path(@current_user), class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "完了済みタスク", tasks_completed_show_path(@current_user), class: "nav-link active" %>
+            <%= link_to "完了済みタスク", tasks_index_completed_path(@current_user), class: "nav-link active" %>
           </li>
         
           <li class="nav-item">
@@ -20,9 +16,6 @@
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ヘルプ", help_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "お問い合わせ", contact_path, class: "nav-link active" %>
@@ -37,9 +30,7 @@
           <li class="nav-item">
             <%= link_to "ログイン", login_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "ヘルプ", help_path, class: "nav-link" %>
-          </li>
+          
           <li class="nav-item">
             <%= link_to "お問い合わせ", contact_path, class: "nav-link" %>
           </li>

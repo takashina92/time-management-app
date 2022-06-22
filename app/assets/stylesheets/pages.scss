@@ -92,3 +92,21 @@ h1, input {
 .inputButton:focus {
   outline: none;
 }
+
+
+//top-page after logged in
+.task-list-top {
+  margin-top: 50px;
+  margin-right: 50px;
+  li {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: large;
+    height: 40px;
+    list-style: none;
+  }
+}
+
+.list-group {
+  margin-top: 30px;
+}

@@ -1,3 +1,58 @@
+<% if logged_in? %>
+
+<div class="container">
+  <div class="col-md-4">
+    <div class="task-list-top" align="center">
+    <h3>進行中のタスク</h3>
+    <ul class="list-group">
+      <% if @tasks_doing %>
+        <% @tasks_doing.each do |task| %>
+          <li class="list-group-item-primary"><%= task.content %></li>
+        <% end %>
+      <% else %>
+        <p>進行中のタスクはありません</p>
+      <% end %>
+    <ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="task-list-top" align="center">
+    <h3>未完了のタスク</h3>
+    <ul class="list-group">
+      <% if @tasks %>
+        <% @tasks.each do |task| %>
+          <li class="list-group-item-warning"><%= task.content %></li>
+        <% end %>
+        <% if @tasks.count >= 8 %>
+          <font size="5" align="center">:</font>
+        <% end %>
+      <% else %>
+        <p>未完了のタスクはありません</p>
+      <% end %>
+    <ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="task-list-top" align="center">
+    <h3>完了済みのタスク</h3>
+    <ul class="list-group">
+      <% if @tasks_done %>
+        <% @tasks_done.each do |task| %>
+          <li class="list-group-item-success"><%= task.content %></li>
+        <% end %>
+        <% if @tasks_done.count >= 8 %>
+          <font size="5" align="center">:</font>
+        <% end %>
+      <% else %>
+        <p>完了済みのタスクはありません</p>
+      <% end %>
+    <ul>
+    </div>
+  </div>
+</div>
+
+<% else %>
+
 <div class="container">
   <div class="col-md-6">
     <div id="logbox">
@@ -31,3 +86,4 @@
     </div>
   </div>
 </div>
+<% end %>

@@ -16,7 +16,7 @@
           <span class="opacity-75">未完了</span>
         <% end %>
       
-        <%= link_to tasks_completed_show_path(@current_user), class: "d-inline-block text-white ml-3" do %>
+        <%= link_to tasks_index_completed_path(@current_user), class: "d-inline-block text-white ml-3" do %>
           <strong><%= @tasks_done.count %></strong>
           <span class="opacity-75">完了済み<span>
         <% end %>
