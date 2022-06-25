@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!( name: 'aaa', email: 'aaa@aaa.com', passsword: 'aaaa' )
+User.create!( name: 'aaa', email: 'aaa@aaa.com', password: 'aaaa' )
 
 5.times do |n|
-  User.create!( name: "テスト#{n+1}@", email: "test#{n+1}@test.com", passsword: "test" )
+  User.create!( name: "テスト#{n+1}@", email: "test#{n+1}@test.com", password: "test" )
 end
 
 User.all.each do |user|
