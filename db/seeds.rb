@@ -8,8 +8,8 @@
 
 User.create!(
   name: 'aaa'
-  email: aaa@aaa.com
-  passsword: aaaa
+  email: 'aaa@aaa.com'
+  passsword: 'aaaa'
 )
 
 5.times do |n|
