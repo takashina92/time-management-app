@@ -15,7 +15,7 @@ User.create!(
 5.times do |n|
   User.create!(
     name: "テスト#{n+1}@"
-    email: "test@test.com"
+    email: "test#{n+1}@test.com"
     passsword: "test"
   )
 end
