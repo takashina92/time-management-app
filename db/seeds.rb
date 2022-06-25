@@ -14,7 +14,7 @@ end
 
 User.all.each do |user|
   20.times do
-    content = Faker::Lorem.sentence(1)
+    content = Faker::Lorem.sentence(word_count: 1)
     user.tasks.create!(content: content, done: 0, user_id: user.id)
   end
 end
