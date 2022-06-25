@@ -23,6 +23,6 @@ end
 User.all.each do |user|
   20.times {
     content = Faker::Lorem.sentence(1)
-    user.tasks.create!(content: content, done: 0)
+    user.tasks.create!(content: content, done: 0, user_id: user.id)
   }
 end
