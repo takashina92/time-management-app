@@ -1,6 +1,6 @@
 <div class="task_list">
 <h1>完了済みタスク</h1>
-  <table border="1" width="50%" align="center">
+  <table class="table table-sm" border="1" width="50%" align="center">
     <tr bgcolor="silver">
       <th>作成日</th>
       <th>完了日</th>
@@ -9,7 +9,7 @@
       <th>削除</th>
     </tr>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr class="table-success">
         <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
         <th><%= task.complete_date %></th>
         <th><%= task.content %></th>

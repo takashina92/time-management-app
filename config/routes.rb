@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get    '/login',     to: 'sessions#new'
   post   '/login',     to: 'sessions#create'
   delete '/logout',    to: 'sessions#destroy'
+  get    '/search',    to: 'searches#search', as: 'search'
   get    '/users/:id/destroy_page', to: 'users#destroy_page', as: 'destroy_page'
   
   get    '/tasks/:id/index',           to: 'tasks#index',           as: 'tasks_index'

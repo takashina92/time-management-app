@@ -20,24 +20,24 @@ before_action :correct_user, only: [:index_complete, :index]
     @task = Task.find_by(id: params[:id], user_id: current_user.id)
     @task.update(done: 1, complete_date: Date.today)
     flash[:success] = "タスクを完了しました"
-    redirect_to tasks_show_path(@task.user_id)
+    redirect_to tasks_index_path(@task.user_id)
   end
 
   def incomplete
     @task = Task.find_by(id: params[:id], user_id: current_user.id)
     @task.update(done: 0)
     flash[:success] = "タスクを未完了にしました"
-    redirect_to tasks_completed_show_path(@task.user_id)
+    redirect_to tasks_index_completed_path(@task.user_id)
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
       flash[:success] = "タスクを新規作成しました"
-      redirect_to tasks_show_path(@task.user_id)
+      redirect_to tasks_index_path(@task.user_id)
     else
       flash[:danger] = "無効な投稿です"
-      redirect_to tasks_show_path(@task.user_id) #renderだとタスク一覧が読み込めず表示エラーになる
+      redirect_to tasks_index_path(@task.user_id) #renderだとタスク一覧が読み込めず表示エラーになる
     end
   end
 
@@ -58,10 +58,10 @@ before_action :correct_user, only: [:index_complete, :index]
     @task.destroy
     flash[:success] = "タスクを削除しました"
     path = Rails.application.routes.recognize_path(request.referer) #遷移直前のアクション、コントローラーを取得
-    if path[:action] == 'show'
-      redirect_to tasks_show_path(@task.user_id)
-    elsif path[:action] == 'show_completed'
-      redirect_to tasks_completed_show_path(@task.user_id)
+    if path[:action] == 'index'
+      redirect_to tasks_index_path(@task.user_id)
+    elsif path[:action] == 'index_completed'
+      redirect_to tasks_index_completed_path(@task.user_id)
     else
       redirect_to root_url
     end

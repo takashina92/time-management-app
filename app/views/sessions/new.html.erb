@@ -1,24 +1,17 @@
-<h1>ログイン</h1>
-  <p>ログイン</p>
-  <%= form_with scope: :session, url: login_path do |form| %>
-      
-    <li>
-      <%= form.label :email, "メールアドレス" %>
-      <%= form.email_field :email %>
-    </li>
-      
-    <li>
-      <%= form.label :password, "パスワード" %>
-      <%= form.password_field :password %>
-    </li>
-
-    <li>
-      <%= form.label :remember_me do %>
-          <%= form.check_box :remember_me %>
-          <span>このンコンピューターに記憶する</span>
-      <% end %>
-    </li>
-      
-    <%= form.submit "ログイン", class: "btn btn-primary" %>
-
-  <% end %>
+<div class="container">
+  <div id="logbox">
+    <%= form_with scope: :session, url: login_path, id: 'signup' do |f| %>
+      <h1>ログイン</h1>
+      <%= f.email_field :email, placeholder: 'メールアドレス', class: 'input pass' %>
+      <%= f.password_field :password, placeholder: 'パスワード', class: 'input pass' %>
+      <%= f.submit 'ログイン', class: 'inputButton' %>
+      <div class="text-center">  
+        <%= f.check_box :remember_me %>
+        <span>このコンピューターに記憶する</span>
+      </div>
+      <div class='text-center'>
+        <%= link_to 'パスワードを忘れた', '#' %>
+      </div>
+    <% end %>
+  </div>
+</div>

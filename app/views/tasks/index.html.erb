@@ -1,46 +1,45 @@
 <div class="task_list">
-<h1>未完了タスク</h1>
-<div class="task_form">
-  <%= form_with url: tasks_path do |form| %>
-    <%= form.text_area :content, size: "50x3" %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= form.submit "タスクを作成" , class: 'submit-button' %>
-  <% end %>
-</div>
-
-<div class="task-list">
-  <table border="1" width="50%" align="center">
-    <tr bgcolor="silver">
-      <th>作成日</th>
-      <th>ステータス</th>
-      <th>未完了タスク一覧</th>
-      <th>完了</th>
-      <th>削除</th>
-      <th></th>
-    </tr>
-    <% @tasks.each do |task| %>
-      <tr>
-        <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
-        
-        <% if task.doing %>
-          <th>作業中</th>
-        <% else %>
-          <th></th>
-        <% end %>
-      
-        <th><%= task.content %></th>
-        <th><%= link_to "完了", complete_path(id: task.id), method: :post %></th>
-        <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
-        <th>
-          <% if task.doing %>
-            <%= link_to "終了", tasks_stop_path(id: task.id), method: :post %>
-          <% else %>
-            <%= link_to "開始", tasks_start_path(id: task.id), method: :post %>
-          <% end %>
-        </th>
-      </tr>
+  <h1>未完了タスク</h1>
+  <div class="task_form">
+    <%= form_with url: tasks_path do |form| %>
+      <%= form.text_area :content, size: "50x3" %>
+      <%= hidden_field_tag :user_id, current_user.id %>
+      <%= form.submit "タスクを作成" , class: 'submit-button' %>
     <% end %>
-  </table>
-</div>
+  </div>
+
+  <div class="task-list">
+    <table class="table table-sm" border="1" width="50%" align="center">
+      <tr bgcolor="silver">
+        <th>作成日</th>
+        <th>ステータス</th>
+        <th>未完了タスク一覧</th>
+        <th>完了</th>
+        <th>削除</th>
+        <th></th>
+      </tr>
+      <% @tasks.each do |task| %>
+        <% if task.doing %>
+          <tr class="table-primary">
+            <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
+            <th>作業中</th>
+            <th><%= task.content %></th>
+            <th><%= link_to "完了", complete_path(id: task.id), method: :post %></th>
+            <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
+            <th><%= link_to "終了", tasks_stop_path(id: task.id), method: :post %></th>
+          </tr>
+        <% else %>
+          <tr class="table-warning">
+            <th><%= task.created_at.strftime('%Y/%m/%d') %></th>
+            <th></th>
+            <th><%= task.content %></th>
+            <th><%= link_to "完了", complete_path(id: task.id), method: :post %></th>
+            <th><%= link_to "削除", tasks_destroy_path(id: task.id), method: :delete %>  <%# タスクidをパラメータとして送信 %></th>
+            <th><%= link_to "開始", tasks_start_path(id: task.id), method: :post %></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
 </div>
 <%= paginate @tasks %>

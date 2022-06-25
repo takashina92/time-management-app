@@ -1,0 +1,22 @@
+<div class="task_list">
+  <h1>ユーザー一覧</h1>
+  <table class="table table-sm" border="1" width="50%" align="center">
+    <tr bgcolor="silver">
+      <th>ユーザー名</th>
+      <th>未完了</th>
+      <th>進行中</th>
+      <th>完了済</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr class="table-info">
+        <% tasks = Task.where(user_id: user.id, done: 0) %>
+        <% tasks_doing = Task.where(user_id: user.id, done: 0, doing: 1) %>
+        <% tasks_done = Task.where(user_id: user.id, done: 1) %>
+        <th><%= user.name %></th>
+        <th><%= tasks.count %></th>
+        <th><%= tasks_doing.count %></th>
+        <th><%= tasks_done.count %></th>
+      </tr>
+    <% end %>
+  </table>
+</div>
