@@ -1,24 +1,48 @@
-# README
+# アプリケーション概要
+タスクの管理を行う。進行状況に応じて未完了、進行中、完了済みにステータスを変更。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# URL
+https://task-app111.herokuapp.com/
 
-Things you may want to cover:
+# 機能一覧
+**ユーザー機能**
+  
+  ・新規作成
+  
+  ・編集
+  
+  ・削除
+  
+  ・ログイン
+  
+  ・ログアウト
+  
+  ・ログイン情報の保持
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**タスク管理機能**
+  
+   ・タスクの新規作成
+  
+  ・削除
+  
+  ・ステータスを未完了、進行中、完了済みに変更
+  
+  ・検索
+  
+# 使用技術
+  
+  ・HTML
+  
+  ・SCSS
+  
+  ・Bootstrap 5.1.3
+  
+  ・Ruby 3.0.3
+  
+  ・Ruby on Rails 6.1.5
+  
+  ・sqlite3 3.37.2
+  
+  ・Heroku
+  
+  ・GitHub
