@@ -11,7 +11,7 @@
           <%= link_to "変更", edit_user_path, class: "edit-link" %>
         </div>
 
-        <%= link_to tasks_show_path(@current_user), class: "d-inline-block text-white" do %>
+        <%= link_to tasks_index_path(@current_user), class: "d-inline-block text-white" do %>
           <strong><%= @tasks.count %></strong>
           <span class="opacity-75">未完了</span>
         <% end %>
